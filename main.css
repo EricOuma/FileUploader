@@ -4,3 +4,13 @@ body {
 .fa-trash-alt:hover {
     color: red;
 }
+.fa-trash-alt {
+    color: #007bff;
+}
+.file-name {
+    max-width: 210px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  overflow: hidden;
+    display: inline-block;
+}

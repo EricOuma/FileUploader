@@ -17,8 +17,9 @@
     <title>UPLOAD FILES</title>
   </head>
   <body>
+    <noscript>This page cannot work with JavaScript disabled</noscript>
       <div class="d-flex justify-content-center align-items-center">
-          <div class="jumbotron col-5">
+          <div class="jumbotron col-md-5">
             <form>
                 <div class="form-group">
                   <label for="firstname">First Name</label>
@@ -29,11 +30,9 @@
                   <input type="text" class="form-control" id="lastname">
                 </div>
                 <div class="form-group">
-                    <label for="lastname">Attachment(s)</label><a class="ml-3 text-success"><i class="fas fa-plus"></i> Add file</a>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center"><span><span class="file-name font-weight-bold">Add Writer.pdf</span><span class="pl-1 file-size">(18K)</span></span><a href=""><i class="far fa-trash-alt"></i></a></li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center"><span><span class="file-name font-weight-bold">Add Writer.pdf</span><span class="pl-1 file-size">(18K)</span></span><a href=""><i class="far fa-trash-alt"></i></a></li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center"><span><span class="file-name font-weight-bold">Add Writer.pdf</span><span class="pl-1 file-size">(18K)</span></span><a href=""><i class="far fa-trash-alt"></i></a></li>
+                    <label for="lastname">Attachment(s)</label><label for="fileInput" class="ml-3 text-success" data-toggle="tooltip" data-placement="bottom" title="Attach files"><i class="fas fa-plus"></i> Add file</label>
+                    <input type="file" id="fileInput" multiple accept="image/*" class="invisible">
+                    <ul class="list-group list-group-flush" id="fileList">
                     </ul>
                   </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
