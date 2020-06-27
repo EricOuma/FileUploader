@@ -5,12 +5,23 @@ const fileInput = document.getElementById("fileInput"),
 
 fileInput.addEventListener("change", handleFiles, false);
 
+var allFiles = []
+
+function removeFile(index) {
+    allFiles.splice(index, 1);
+}
+
+
 function handleFiles() {
-    if (!this.files.length) {
-        fileList.innerHTML = "<p>No files selected!</p>";
-    } else {
+    if (fileInput.files.length == 0) {
         fileList.innerHTML = "";
+    }
+
+    if(this.files.length > 0) {
         for (let i = 0; i < this.files.length; i++) {
+
+            allFiles.push(this.files[i])
+
             const li = document.createElement("li");
             // add or remove multiple classes using spread syntax
             const liCls = ["list-group-item", "d-flex", "justify-content-between", "align-items-center"];
@@ -35,7 +46,9 @@ function handleFiles() {
             fileSize.innerHTML = " (" + sizeOutput + ")";
             li.appendChild(fileSize)
 
+
             const deleteSpan = document.createElement("span")
+            deleteSpan.classList.add("delete-icon")
             deleteSpan.dataset.toggle = "tooltip"
             deleteSpan.dataset.placement = "bottom"
             deleteSpan.setAttribute("title", "Remove attachment")
@@ -44,6 +57,15 @@ function handleFiles() {
             deleteIcon.classList.add("far", "fa-trash-alt")
             deleteSpan.appendChild(deleteIcon)
             li.appendChild(deleteSpan)
+
+
+            deleteSpan.addEventListener("click", function() {
+                // var listItems = fileList.childNodes
+                var listItems = $("#fileList li")
+                var listIndex = listItems.index(this.parentNode)
+                removeFile(listIndex)
+                this.parentNode.remove()
+            });
         }
     }
 }
